@@ -1,20 +1,18 @@
-class Calc {
-  def isPrime(n: Int): Boolean = {
-    if (n < 2) {
-      return false
-    } else {
-      !((2 to Math.sqrt(n).toInt) exists (n % _ == 0))
-    }
+import scala.annotation.tailrec
+
+object S99_1 {
+  private def last[A](list: List[A]): A = list.last
+
+  @tailrec
+  def lastRecursive[A](ls: List[A]): A = ls match {
+    case h :: Nil  => h
+    case _ :: tail => lastRecursive(tail)
+    case _         => throw new NoSuchElementException
   }
 }
 
 object Main {
   def main(args: Array[String]): Unit = {
     println("Hello, World!")
-    val calc = new Calc
-    println(calc.isPrime(4))
-    println(calc.isPrime(5))
-    println(calc.isPrime(61))
-    println(calc.isPrime(63))
   }
 }
